@@ -9,44 +9,19 @@ Item {
 
 	property var pluginApi: null
 
-	// ─── Settings reactivity (mirrors tailscale plugin) ───
-	property int settingsVersion: 0
-	property var settingsWatcher: pluginApi?.pluginSettings
-	onPluginApiChanged: if (pluginApi) settingsVersion++
-	onSettingsWatcherChanged: if (settingsWatcher) settingsVersion++
+	readonly property var cfg: pluginApi?.pluginSettings || ({})
+	readonly property var defaults: pluginApi?.manifest?.metadata?.defaultSettings || ({})
 
-	property int refreshInterval: _resolve("refreshInterval", 3000)
-	property bool showCountryFlag: _resolve("showCountryFlag", true)
-	property bool showCityName: _resolve("showCityName", false)
-	property bool showIp: _resolve("showIp", false)
-	property bool compactMode: _resolve("compactMode", false)
-	property string clickAction: _resolve("clickAction", "toggle")
-	property bool relayClickConnects: _resolve("relayClickConnects", true)
-	property bool confirmDisconnectInLockdown: _resolve("confirmDisconnectInLockdown", true)
-	property var favoriteCountries: _resolve("favoriteCountries", [])
-	property int expiryWarningDays: _resolve("expiryWarningDays", 7)
-
-	function _resolve(key, fallback) {
-		var s = pluginApi?.pluginSettings
-		var d = pluginApi?.manifest?.metadata?.defaultSettings
-		if (s && s[key] !== undefined) return s[key]
-		if (d && d[key] !== undefined) return d[key]
-		return fallback
-	}
-
-	onSettingsVersionChanged: {
-		refreshInterval = _resolve("refreshInterval", 3000)
-		showCountryFlag = _resolve("showCountryFlag", true)
-		showCityName = _resolve("showCityName", false)
-		showIp = _resolve("showIp", false)
-		compactMode = _resolve("compactMode", false)
-		clickAction = _resolve("clickAction", "toggle")
-		relayClickConnects = _resolve("relayClickConnects", true)
-		confirmDisconnectInLockdown = _resolve("confirmDisconnectInLockdown", true)
-		favoriteCountries = _resolve("favoriteCountries", [])
-		expiryWarningDays = _resolve("expiryWarningDays", 7)
-		updateTimer.interval = refreshInterval
-	}
+	readonly property int refreshInterval: cfg.refreshInterval ?? defaults.refreshInterval ?? 3000
+	readonly property bool showCountryFlag: cfg.showCountryFlag ?? defaults.showCountryFlag ?? true
+	readonly property bool showCityName: cfg.showCityName ?? defaults.showCityName ?? false
+	readonly property bool showIp: cfg.showIp ?? defaults.showIp ?? false
+	readonly property bool compactMode: cfg.compactMode ?? defaults.compactMode ?? false
+	readonly property string clickAction: cfg.clickAction ?? defaults.clickAction ?? "toggle"
+	readonly property bool relayClickConnects: cfg.relayClickConnects ?? defaults.relayClickConnects ?? true
+	readonly property bool confirmDisconnectInLockdown: cfg.confirmDisconnectInLockdown ?? defaults.confirmDisconnectInLockdown ?? true
+	readonly property var favoriteCountries: cfg.favoriteCountries ?? defaults.favoriteCountries ?? []
+	readonly property int expiryWarningDays: cfg.expiryWarningDays ?? defaults.expiryWarningDays ?? 7
 
 	// ─── Daemon state ───
 	property bool installed: false
@@ -55,7 +30,6 @@ Item {
 	property var currentLocation: null      // { country, city, hostname, ipv4, ipv6, mullvad_exit_ip }
 	property var visibleLocation: null      // populated when disconnected
 	property bool isRefreshing: false
-	property string lastToggleAction: ""
 
 	function _stateFromJson(s) {
 		if (!s) return "error"
@@ -193,14 +167,12 @@ Item {
 
 	function connectVpn() {
 		if (!root.installed) return
-		root.lastToggleAction = "connect"
 		connectProcess.command = ["mullvad", "connect"]
 		connectProcess.running = true
 	}
 
 	function disconnectVpn() {
 		if (!root.installed) return
-		root.lastToggleAction = "disconnect"
 		disconnectProcess.command = ["mullvad", "disconnect"]
 		disconnectProcess.running = true
 	}

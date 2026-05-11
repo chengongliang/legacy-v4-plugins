@@ -10,8 +10,7 @@
 	"tags": [
 		"Bar",
 		"Network",
-		"Panel",
-		"VPN"
+		"Panel"
 	],
 	"entryPoints": {
 		"main": "Main.qml",

@@ -132,12 +132,11 @@ Item {
 							} else {
 								parts.push(root.pluginApi?.tr("action.auto-select"))
 							}
-							var tr = root.pluginApi ? root.pluginApi.tr.bind(root.pluginApi) : function (k) { return k }
-							if (_mh) parts.push(_mhe ? tr("badges.multihop-via").replace("{country}", root._countryName(_mhe)) : tr("badges.multihop"))
-							if (_iv !== "any") parts.push(tr("badges.ip-version").replace("{version}", _iv))
-							if (_ld) parts.push(tr("badges.lockdown"))
-							if (_ac) parts.push(tr("badges.auto-connect"))
-							if (_lan === "block") parts.push(tr("badges.lan-blocked"))
+							if (_mh) parts.push(_mhe ? root.pluginApi?.tr("badges.multihop-via", { country: root._countryName(_mhe) }) : root.pluginApi?.tr("badges.multihop"))
+							if (_iv !== "any") parts.push(root.pluginApi?.tr("badges.ip-version", { version: _iv }))
+							if (_ld) parts.push(root.pluginApi?.tr("badges.lockdown"))
+							if (_ac) parts.push(root.pluginApi?.tr("badges.auto-connect"))
+							if (_lan === "block") parts.push(root.pluginApi?.tr("badges.lan-blocked"))
 							return parts.join(" · ")
 						}
 					}
@@ -181,7 +180,7 @@ Item {
 					anchors.margins: Style.marginS
 					text: (root.main?.accountDaysLeft ?? 0) <= 0
 						? pluginApi?.tr("account.expired")
-						: pluginApi?.tr("account.expires-in").replace("{days}", String(root.main?.accountDaysLeft ?? 0))
+						: pluginApi?.tr("account.expires-in", { days: root.main?.accountDaysLeft ?? 0 })
 					color: Color.mOnError
 					wrapMode: Text.Wrap
 				}
@@ -247,14 +246,15 @@ Item {
 				}
 			}
 
-			ListView {
+			NListView {
 				id: relayListView
 				Layout.fillWidth: true
 				Layout.preferredHeight: 160
 				clip: true
 				model: relayModel
 				spacing: Style.marginXXS
-				ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
+				horizontalPolicy: ScrollBar.AlwaysOff
+				verticalPolicy: ScrollBar.AsNeeded
 
 				delegate: Rectangle {
 					width: relayListView.width
