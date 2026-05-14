@@ -12,14 +12,18 @@ NIconButtonHot {
     readonly property bool isLoading: main.isLoading ?? false
     readonly property var pluginSettings: pluginApi?.pluginSettings ?? ({})
     readonly property string connectedColor: pluginSettings.connectedColor
-    readonly property string disconnectedColor: pluginSettings.disconnectedColor
+    readonly property string disconnectedColor: pluginSettings.disconnectedColor 
 
     icon: isLoading ? "reload" : connectedCount > 0 ? "shield-lock" : "shield"
     tooltipText: connectedCount > 0
         ? pluginApi?.tr("common.connected")
         : pluginApi?.tr("common.disconnected")
 
-    colorFg: Color.resolveColorKeyOptional(connectedCount > 0 ? connectedColor : disconnectedColor) ?? Color.mPrimary
+colorFg: {
+    const key = connectedCount > 0 ? connectedColor : disconnectedColor;
+    if (!key || key === "none") return Color.mPrimary;
+    return Color.resolveColorKeyOptional(key) ?? Color.mPrimary;
+}
 
     onClicked: pluginApi?.togglePanel(screen, this)
 }
