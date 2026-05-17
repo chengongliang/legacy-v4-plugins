@@ -54,8 +54,8 @@ ColumnLayout {
   // Custom Hyprland layout toggle
   NCheckbox {
     Layout.fillWidth: true
-    label: "Use custom Hyprland layout (Lua)"
-    description: "Let a Hyprland custom Lua layout tile the windows instead of floating+positioning them. Requires Hyprland 0.55+ Lua config and steam-layout.lua (see README). When enabled, the width sliders below are handled by the Lua layout."
+    label: pluginApi?.tr("settings.custom-layout-label")
+    description: pluginApi?.tr("settings.custom-layout-description")
     checked: root.valueUseCustomLayout
     onToggled: root.valueUseCustomLayout = checked
   }
