@@ -1,9 +1,13 @@
 {
+  "command": {
+    "description": "gnu passのパスワードエントリを検索"
+  },
   "result": {
     "goBack": "戻る",
     "folder": "フォルダ",
     "password": "パスワード",
-    "passwordEntry": "パスワードエントリ"
+    "passwordEntry": "パスワードエントリ",
+    "loading": "パスワードエントリを読み込み中..."
   },
   "action": {
     "copyPassword": "パスワードをコピー",
@@ -28,6 +32,10 @@
     "wtypeDelay": {
       "label": "Wtypeキー入力遅延",
       "desc": "wtypeのキー間遅延ミリ秒（デフォルト：12）"
+    },
+    "clipTimeout": {
+      "label": "クリップボードタイムアウト",
+      "desc": "クリップボードが消去されるまでの秒数（空 = env/PASSWORD_STORE_CLIP_TIME、デフォルト: 45）"
     }
   },
   "notification": {

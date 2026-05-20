@@ -1,9 +1,13 @@
 {
+  "command": {
+    "description": "Buscar entradas de contraseñas de gnu pass"
+  },
   "result": {
     "goBack": "Volver",
     "folder": "Carpeta",
     "password": "Contraseña",
-    "passwordEntry": "Entrada de contraseña"
+    "passwordEntry": "Entrada de contraseña",
+    "loading": "Cargando entradas de contraseñas..."
   },
   "action": {
     "copyPassword": "Copiar contraseña",
@@ -28,6 +32,10 @@
     "wtypeDelay": {
       "label": "Retraso de pulsación de wtype",
       "desc": "Retraso entre pulsaciones en ms para wtype (por defecto: 12)"
+    },
+    "clipTimeout": {
+      "label": "Tiempo de espera del portapapeles",
+      "desc": "Segundos antes de borrar el portapapeles (vacío = env/PASSWORD_STORE_CLIP_TIME, predeterminado: 45)"
     }
   },
   "notification": {

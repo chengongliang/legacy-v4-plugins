@@ -1,9 +1,13 @@
 {
+  "command": {
+    "description": "Zoek gnu pass wachtwoordvermeldingen"
+  },
   "result": {
     "goBack": "Terug",
     "folder": "Map",
     "password": "Wachtwoord",
-    "passwordEntry": "Wachtwoordentry"
+    "passwordEntry": "Wachtwoordentry",
+    "loading": "Wachtwoordvermeldingen laden..."
   },
   "action": {
     "copyPassword": "Wachtwoord kopiëren",
@@ -28,6 +32,10 @@
     "wtypeDelay": {
       "label": "Wtype toetsvertraging",
       "desc": "Vertraging tussen toetsaanslagen in ms voor wtype (standaard: 12)"
+    },
+    "clipTimeout": {
+      "label": "Klembord timeout",
+      "desc": "Seconden voordat het klembord wordt gewist (leeg = env/PASSWORD_STORE_CLIP_TIME, standaard: 45)"
     }
   },
   "notification": {

@@ -1,9 +1,13 @@
 {
+  "command": {
+    "description": "Gnu Pass Passworteinträge durchsuchen"
+  },
   "result": {
     "goBack": "Zurück",
     "folder": "Ordner",
     "password": "Passwort",
-    "passwordEntry": "Passworteintrag"
+    "passwordEntry": "Passworteintrag",
+    "loading": "Lade Passworteinträge..."
   },
   "action": {
     "copyPassword": "Passwort kopieren",
@@ -28,6 +32,10 @@
     "wtypeDelay": {
       "label": "Wtype-Tastenverzögerung",
       "desc": "Verzögerung zwischen Tastenanschlägen in ms für wtype (Standard: 12)"
+    },
+    "clipTimeout": {
+      "label": "Zwischenablage-Timeout",
+      "desc": "Sekunden bis die Zwischenablage gelöscht wird (leer = env/PASSWORD_STORE_CLIP_TIME, Standard: 45)"
     }
   },
   "notification": {

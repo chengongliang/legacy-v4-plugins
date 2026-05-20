@@ -1,9 +1,13 @@
 {
+  "command": {
+    "description": "搜索 gnu pass 密码条目"
+  },
   "result": {
     "goBack": "返回",
     "folder": "文件夹",
     "password": "密码",
-    "passwordEntry": "密码条目"
+    "passwordEntry": "密码条目",
+    "loading": "正在加载密码条目..."
   },
   "action": {
     "copyPassword": "复制密码",
@@ -28,6 +32,10 @@
     "wtypeDelay": {
       "label": "Wtype按键延迟",
       "desc": "wtype按键之间延迟毫秒数（默认：12）"
+    },
+    "clipTimeout": {
+      "label": "剪贴板超时",
+      "desc": "剪贴板清除前的秒数（空 = env/PASSWORD_STORE_CLIP_TIME，默认：45）"
     }
   },
   "notification": {

@@ -1,9 +1,13 @@
 {
+  "command": {
+    "description": "Gnu pass parola girdilerini ara"
+  },
   "result": {
     "goBack": "Geri dön",
     "folder": "Klasör",
     "password": "Parola",
-    "passwordEntry": "Parola girişi"
+    "passwordEntry": "Parola girişi",
+    "loading": "Parola girdileri yükleniyor..."
   },
   "action": {
     "copyPassword": "Parolayı kopyala",
@@ -28,6 +32,10 @@
     "wtypeDelay": {
       "label": "Wtype Tuş Gecikmesi",
       "desc": "wtype için tuşlar arası gecikme ms cinsinden (varsayılan: 12)"
+    },
+    "clipTimeout": {
+      "label": "Pano zaman aşımı",
+      "desc": "Panonun temizlenmesi için saniye (boş = env/PASSWORD_STORE_CLIP_TIME, varsayılan: 45)"
     }
   },
   "notification": {

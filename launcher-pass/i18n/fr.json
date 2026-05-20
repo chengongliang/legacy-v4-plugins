@@ -1,9 +1,13 @@
 {
+  "command": {
+    "description": "Rechercher des entrées de mot de passe gnu pass"
+  },
   "result": {
     "goBack": "Revenir",
     "folder": "Dossier",
     "password": "Mot de passe",
-    "passwordEntry": "Entrée de mot de passe"
+    "passwordEntry": "Entrée de mot de passe",
+    "loading": "Chargement des entrées de mot de passe..."
   },
   "action": {
     "copyPassword": "Copier le mot de passe",
@@ -28,6 +32,10 @@
     "wtypeDelay": {
       "label": "Délai de frappe wtype",
       "desc": "Délai entre les frappes en ms pour wtype (par défaut: 12)"
+    },
+    "clipTimeout": {
+      "label": "Délai d'expiration du presse-papiers",
+      "desc": "Secondes avant l'effacement du presse-papiers (vide = env/PASSWORD_STORE_CLIP_TIME, défaut: 45)"
     }
   },
   "notification": {

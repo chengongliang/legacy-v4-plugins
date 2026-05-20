@@ -1,9 +1,13 @@
 {
+  "command": {
+    "description": "Поиск записей паролей gnu pass"
+  },
   "result": {
     "goBack": "Назад",
     "folder": "Папка",
     "password": "Пароль",
-    "passwordEntry": "Запись пароля"
+    "passwordEntry": "Запись пароля",
+    "loading": "Загрузка записей паролей..."
   },
   "action": {
     "copyPassword": "Копировать пароль",
@@ -28,6 +32,10 @@
     "wtypeDelay": {
       "label": "Задержка ввода wtype",
       "desc": "Задержка между нажатиями клавиш в мс для wtype (по умолчанию: 12)"
+    },
+    "clipTimeout": {
+      "label": "Тайм-аут буфера обмена",
+      "desc": "Секунды до очистки буфера обмена (пусто = env/PASSWORD_STORE_CLIP_TIME, по умолчанию: 45)"
     }
   },
   "notification": {
