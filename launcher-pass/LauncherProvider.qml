@@ -315,8 +315,11 @@ Item {
       }
     }
 
-    scored.sort(function(a, b) { return a.entry.name.localeCompare(b.entry.name) })
-    scored.sort(function(a, b) { return b.score - a.score })
+    scored.sort(function(a, b) {
+      var scoreDiff = b.score - a.score
+      if (scoreDiff !== 0) return scoreDiff
+      return a.entry.name.localeCompare(b.entry.name)
+    })
 
     for (var j = 0; j < Math.min(scored.length, 50); j++) {
       var s = scored[j]
