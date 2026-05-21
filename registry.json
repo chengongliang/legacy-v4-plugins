@@ -19,7 +19,7 @@
     {
       "id": "air-quality",
       "name": "Air Quality",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "official": false,
       "author": "adriamartin91",
       "description": "Displays real-time air quality data with EPA color coding. Supports Open-Meteo and AQICN data sources. Shows AQI index and pollutant breakdown.",
@@ -33,7 +33,7 @@
         "System",
         "Utility"
       ],
-      "lastUpdated": "2026-04-13T17:44:48+02:00"
+      "lastUpdated": "2026-05-19T04:42:13+03:00"
     },
     {
       "id": "arch-updater",
@@ -108,7 +108,7 @@
     {
       "id": "battery-threshold",
       "name": "Battery Threshold Control",
-      "version": "1.2.3",
+      "version": "1.2.4",
       "official": false,
       "author": "Wilfred Mallawa",
       "description": "Set the battery threshold for laptop batteries to extend battery lifespan",
@@ -120,7 +120,7 @@
         "Panel",
         "System"
       ],
-      "lastUpdated": "2026-04-25T13:16:18+02:00"
+      "lastUpdated": "2026-05-19T04:42:51+03:00"
     },
     {
       "id": "calendar-widget",
