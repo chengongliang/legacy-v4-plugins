@@ -3,25 +3,19 @@
 # ------------------------------
 # Battery Threshold Udev Setup
 # ------------------------------
-# This script sets up udev rules to allow a non-root user to write to
-# /sys/class/power_supply/BAT0/charge_control_end_threshold.
-# It creates a group 'battery_ctl' and adds the target user to this group.
-#
-# Usage:
-#  $ sudo ./setup_rules.sh        # uses SUDO_USER (with sudo)
-#  $ ./setup_rules.sh username    # use provided username (if ran as root)
+# Generates udev rules and sets up permissions for battery control.
 # ------------------------------
 set -e
 
-RULE_FILE="99-battery-threshold.rules"
+RULE_FILE="/etc/udev/rules.d/99-battery-threshold.rules"
 
-# Check if running as root
+# Ensure script is run as root
 if [ "$EUID" -ne 0 ]; then
 	echo "Error: This script must be run as root (use sudo)"
 	exit 1
 fi
 
-# Determine target user
+# Identify the target user
 TARGET_USER=${SUDO_USER:-$1}
 
 if [ -z "$TARGET_USER" ]; then
@@ -29,27 +23,26 @@ if [ -z "$TARGET_USER" ]; then
 	exit 1
 fi
 
-if [ ! -f "$RULE_FILE" ]; then
-	echo "Error: $RULE_FILE not found in current directory" >&2
-	exit 1
-fi
-
+# Create group if it doesn't exist
 if ! getent group battery_ctl >/dev/null; then
 	echo "Creating battery_ctl group..."
 	groupadd battery_ctl
 fi
 
+# Grant user group membership
 echo "Adding $TARGET_USER to battery_ctl group..."
 usermod -aG battery_ctl "$TARGET_USER"
 
-echo "Installing $RULE_FILE"
+# Generate the udev rules file directly
+echo "Generating $RULE_FILE..."
+cat <<EOF > "$RULE_FILE"
+ACTION=="add|change", SUBSYSTEM=="power_supply", KERNEL=="BAT0", ATTR{charge_control_end_threshold}!="?*", GROUP="battery_ctl", MODE="0664"
+ACTION=="add|change", SUBSYSTEM=="power_supply", KERNEL=="BAT0", ATTR{charge_control_end_threshold}=="?*", GROUP="battery_ctl", MODE="0664"
+EOF
 
-cp "$RULE_FILE" /etc/udev/rules.d/
-
-echo "Reloading rules..."
-
+# Apply configuration
+echo "Reloading udev rules..."
 udevadm control --reload-rules && udevadm trigger
 
-echo "You may need a reboot for the plugin's write access to take effect"
+echo "Log out and back in for group changes to take effect."
 echo "Done!"
-
