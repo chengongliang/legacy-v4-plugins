@@ -35,6 +35,9 @@
         "copilot": {
           "enabled": false
         },
+        "gemini": {
+          "enabled": false
+        },
         "openrouter": {
           "enabled": false,
           "apiKey": ""

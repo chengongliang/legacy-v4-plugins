@@ -294,13 +294,13 @@ ColumnLayout {
                     }
                 }
                 NText {
-                    text: "Gemini"
+                    text: pluginApi?.tr("settings.providers.gemini.name")
                     pointSize: Style.fontSizeM
                     color: Color.mOnSurface
                     Layout.fillWidth: true
                 }
                 NText {
-                    text: "Local files"
+                    text: pluginApi?.tr("settings.providers.gemini.source")
                     pointSize: Style.fontSizeXS
                     color: Color.mOnSurfaceVariant
                 }
