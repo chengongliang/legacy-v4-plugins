@@ -413,7 +413,7 @@ Item {
             pointSize: Style.fontSizeS
             color: mainIpMouseArea.containsMouse ? Color.mPrimary : Color.mOnSurfaceVariant
             font.family: Settings.data.ui.fontFixed
-            
+
             MouseArea {
               id: mainIpMouseArea
               anchors.fill: parent
@@ -428,6 +428,27 @@ Item {
                     "clipboard"
                   )
                 }
+              }
+            }
+          }
+
+          ComboBox {
+            Layout.fillWidth: true
+            visible: (mainInstance?.accounts?.length ?? 0) >= 2
+            textRole: "name"
+            model: (mainInstance?.accounts || []).map(function (a) {
+              return { key: a.id, name: a.tailnet || a.account || a.nickname || a.id }
+            })
+            currentIndex: {
+              var id = mainInstance?.currentAccountId || ""
+              for (var i = 0; i < model.length; i++) {
+                if (model[i].key === id) return i
+              }
+              return -1
+            }
+            onActivated: function (index) {
+              if (mainInstance && index >= 0 && index < model.length) {
+                mainInstance.switchAccount(model[index].key)
               }
             }
           }
@@ -559,6 +580,12 @@ Item {
             interactive: contentHeight > height
             boundsBehavior: Flickable.StopAtBounds
             pressDelay: 0
+            enabled: !(mainInstance?.accountSwitchInProgress ?? false)
+            opacity: enabled ? 1.0 : 0.4
+
+            Behavior on opacity {
+              NumberAnimation { duration: Style.animationFast }
+            }
 
               ColumnLayout {
               id: peerListColumn
