@@ -6,6 +6,8 @@ import qs.Services.System
 
 Item {
     id: root
+    property var pluginApi: null
+
     property var trackedNotifs: []
 
     property var niriWindowListProcess: Component {
