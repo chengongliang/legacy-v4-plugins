@@ -16,35 +16,6 @@ Item {
 
   property var pluginApi: null
 
-  Timer {
-    id: resizeTimer
-    interval: 10
-    repeat: false
-    running: false
-    onTriggered: {
-      // Find the QML Popup ancestor (identified by the `modal` bool property
-      // which is unique to QML Popup and its subclasses) and set its width.
-      var obj = rootItem.parent;
-      var depth = 0;
-      while (obj && depth < 10) {
-        if (typeof obj.modal === "boolean") {
-          obj.width = 640; // 600px content + 2*20px padding
-          break;
-        }
-        obj = obj.parent;
-        depth++;
-      }
-    }
-  }
-
-  Component.onCompleted: {
-    resizeTimer.start();
-  }
-
-  Component.onDestruction: {
-    resizeTimer.stop();
-  }
-
   ColumnLayout {
     id: root
     implicitWidth: 600
