@@ -1,0 +1,32 @@
+{
+  "id": "crypto-market",
+  "name": "Crypto Market",
+  "version": "1.0.0",
+  "minNoctaliaVersion": "4.6.6",
+  "author": "chengongliang",
+  "license": "MIT",
+  "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+  "description": "Real-time cryptocurrency market data from multiple exchanges",
+  "tags": ["Bar", "Panel", "Indicator", "Utility"],
+  "entryPoints": {
+    "main": "Main.qml",
+    "barWidget": "BarWidget.qml",
+    "panel": "Panel.qml",
+    "settings": "Settings.qml"
+  },
+  "dependencies": {
+    "plugins": []
+  },
+  "metadata": {
+    "defaultSettings": {
+      "watchList": ["btc", "eth", "bnb", "sol", "xrp"],
+      "barCoin": "btc",
+      "displayMode": "text",
+      "redRises": false,
+      "refreshInterval": 5,
+      "dataSource": "huobi",
+      "proxyUrl": "",
+      "language": "en"
+    }
+  }
+}

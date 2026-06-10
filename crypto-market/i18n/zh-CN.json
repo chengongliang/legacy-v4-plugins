@@ -1,0 +1,67 @@
+{
+  "barWidget": {
+    "openPanel": "打开行情面板",
+    "switchCompact": "切换到简洁模式",
+    "switchFull": "切换到完整模式"
+  },
+  "dataSource": {
+    "binance": "币安",
+    "coingecko": "CoinGecko",
+    "huobi": "火币",
+    "okx": "OKX"
+  },
+  "menu": {
+    "settings": "设置"
+  },
+  "panel": {
+    "change": "涨跌幅",
+    "close": "关闭",
+    "coin": "币种",
+    "dataFrom": "数据来源",
+    "error": "错误",
+    "high": "最高",
+    "loading": "加载中...",
+    "low": "最低",
+    "noData": "无数据",
+    "price": "最新价",
+    "refresh": "刷新",
+    "refreshNow": "立即刷新",
+    "settings": "设置",
+    "title": "加密货币行情"
+  },
+  "settings": {
+    "barCoin": "状态栏显示币种",
+    "barCoinDesc": "选择在状态栏显示的币种",
+    "colorScheme": "涨跌配色",
+    "colorSchemeDesc": "选择涨跌颜色方案",
+    "configExported": "配置已导出到 ~/Downloads/crypto-market-config.json",
+    "configImportFailed": "导入配置失败",
+    "configImportMissing": "配置文件不存在或内容为空",
+    "configImported": "已从 ~/Downloads/crypto-market-config.json 导入配置",
+    "configMgmt": "配置管理",
+    "configPath": "配置文件路径: ~/Downloads/crypto-market-config.json",
+    "dataSource": "数据源",
+    "dataSourceDesc": "选择行情数据来源",
+    "displayMode": "状态栏显示模式",
+    "displayModeCompact": "简洁模式 (45,230)",
+    "displayModeDesc": "选择完整或简洁模式",
+    "displayModeFull": "完整模式 (BTC 45,230)",
+    "export": "导出配置",
+    "greenRises": "绿涨红跌",
+    "import": "导入配置",
+    "language": "界面语言",
+    "languageDesc": "选择此插件使用的显示语言",
+    "proxy": "代理地址（可选）",
+    "proxyPlaceholder": "http://127.0.0.1:7890",
+    "proxyTip": "留空则不使用代理。格式: http://host:port 或 socks5://host:port",
+    "redRises": "红涨绿跌",
+    "refreshInterval": "刷新频率",
+    "refreshIntervalDesc": "数据更新间隔（1-60 秒）",
+    "search": "搜索添加币种",
+    "searchPlaceholder": "输入币种代码搜索（例如：btc, eth, ada）",
+    "searchResults": "搜索结果",
+    "seconds": "秒",
+    "watchList": "自选币种列表",
+    "watchListTip": "点击币种名称添加或移除，使用箭头调整顺序"
+  }
+}
